@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — Quiz do Saber</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/quiz.css" />
+  <link rel="shortcut icon" href="../img/ICONE02.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- Barra De Navegacao -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+  <img src="../img/ICONE01.png" alt="logo" style="width:70px ;height:70px"  >
+    <div class="nav-logo-text">
+      <div class="quiz">QUIZ</div>
+      <div class="saber">DO SABER</div>
+    </div>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    <li>
+      <a href="../index.html" onclick="fecharMenu()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Início
+      </a>
+    </li>
+    <li>
+      <a href="maisobre.html" onclick="fecharMenu()" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        +Sobre
+      </a>
+    </li>
+    <li>
+      <a href="feedback.html" onclick="fecharMenu()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Feedback
+      </a>
+    </li>
+    <li>
+      <a href="ajuda.html" onclick="fecharMenu()" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Ajuda
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HEADER DO QUIZ -->
+<div class="quiz-header">
+  <div class="quiz-header-inner">
+    <div class="quiz-info">
+      <span id="quiz-disciplina">—</span>
+      <span class="separador">·</span>
+      <span id="quiz-nivel-label">Nível 1</span>
+    </div>
+    <div class="quiz-progresso-wrap">
+      <div class="nivel-badges">
+        <div class="nivel-badge" id="badge-1">N1</div>
+        <div class="nivel-badge" id="badge-2">N2</div>
+        <div class="nivel-badge" id="badge-3">N3</div>
+      </div>
+      <div class="progresso-bar">
+        <div class="progresso-fill" id="progresso-fill"></div>
+      </div>
+      <span class="progresso-pct" id="progresso-pct">0%</span>
+    </div>
+    <button class="btn-sair" id="btn-sair">Sair</button>
+  </div>
+</div>
+
+<!-- ÁREA DO QUIZ -->
+<main class="quiz-main">
+
+  <!-- ECRÃ DE INÍCIO DO NÍVEL -->
+  <div class="ecra" id="ecra-inicio">
+    <div class="inicio-card">
+      <div class="inicio-icon" id="inicio-icon">🎯</div>
+      <h2 id="inicio-titulo">Nível 1 — Fácil</h2>
+      <p id="inicio-desc">Vais responder a 20 perguntas de Verdadeiro/Falso e Múltipla Escolha.</p>
+      <div class="inicio-info">
+        <span>📝 20 perguntas</span>
+        <span>⭐ +20% progresso</span>
+      </div>
+      <button class="btn-comecar" id="btn-comecar">Começar</button>
+    </div>
+  </div>
+
+  <!-- ECRÃ DA PERGUNTA -->
+  <div class="ecra" id="ecra-pergunta" style="display:none">
+    <div class="pergunta-card">
+      <div class="pergunta-header">
+        <span class="pergunta-tipo" id="perg-tipo-label">Verdadeiro ou Falso</span>
+        <span class="pergunta-contador" id="perg-contador">1 / 20</span>
+      </div>
+
+      <div class="pergunta-barra-wrap">
+        <div class="pergunta-barra">
+          <div class="pergunta-barra-fill" id="perg-barra-fill"></div>
+        </div>
+      </div>
+
+      <p class="pergunta-texto" id="perg-texto">—</p>
+
+      <!-- CÓDIGO (para análise de código) -->
+      <pre class="codigo-bloco" id="codigo-bloco" style="display:none"></pre>
+
+      <!-- OPÇÕES VF -->
+      <div class="opcoes-vf" id="opcoes-vf" style="display:none">
+        <button class="opcao-vf verdadeiro" onclick="responderVF(true)">✓ Verdadeiro</button>
+        <button class="opcao-vf falso" onclick="responderVF(false)">✗ Falso</button>
+      </div>
+
+      <!-- OPÇÕES MC -->
+      <div class="opcoes-mc" id="opcoes-mc" style="display:none">
+        <button class="opcao-mc" id="mc-0" onclick="responderMC(0)"></button>
+        <button class="opcao-mc" id="mc-1" onclick="responderMC(1)"></button>
+        <button class="opcao-mc" id="mc-2" onclick="responderMC(2)"></button>
+        <button class="opcao-mc" id="mc-3" onclick="responderMC(3)"></button>
+      </div>
+
+      <!-- OPÇÕES DISSERTIVA -->
+      <div class="opcoes-vf" id="opcoes-dissertiva" style="display:none">
+        <button class="opcao-vf verdadeiro" onclick="responderVF(true)">✓ Correta</button>
+        <button class="opcao-vf falso" onclick="responderVF(false)">✗ Não correta</button>
+      </div>
+
+      <!-- LIGAÇÃO DE COLUNAS -->
+      <div class="opcoes-ligacao" id="opcoes-ligacao" style="display:none">
+        <div class="ligacao-grid" id="ligacao-grid"></div>
+        <button class="btn-confirmar-ligacao" id="btn-confirmar-ligacao" onclick="confirmarLigacao()">Confirmar</button>
+      </div>
+
+      <!-- FEEDBACK -->
+      <div class="feedback" id="feedback" style="display:none">
+        <div class="feedback-inner" id="feedback-inner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECRÃ DE FIM DE NÍVEL -->
+  <div class="ecra" id="ecra-fim-nivel" style="display:none">
+    <div class="inicio-card">
+      <div class="inicio-icon">🏆</div>
+      <h2 id="fim-titulo">Nível 1 Completo!</h2>
+      <p id="fim-desc">Parabéns! Completaste o Nível 1.</p>
+      <div class="inicio-info">
+        <span id="fim-acertos">✓ 0 acertos</span>
+        <span id="fim-progresso">+20% progresso</span>
+      </div>
+      <button class="btn-comecar" id="btn-proximo-nivel">Próximo Nível</button>
+    </div>
+  </div>
+
+  <!-- ECRÃ FINAL -->
+  <div class="ecra" id="ecra-final" style="display:none">
+    <div class="inicio-card">
+      <div class="inicio-icon">🎓</div>
+      <h2>Quiz Completo!</h2>
+      <p id="final-desc">Parabéns! Completaste todos os níveis!</p>
+      <div class="inicio-info">
+        <span>🏆 100% Concluído</span>
+      </div>
+      <button class="btn-comecar" onclick="window.location.href='escolha.html'">Voltar às Disciplinas</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL SAIR -->
+<div class="modal-overlay" id="modal-sair" style="display:none">
+  <div class="modal">
+    <div class="modal-icon">⚠️</div>
+    <h3>Tens a certeza?</h3>
+    <p>Se saíres agora o progresso deste nível perde-se.</p>
+    <div class="modal-btns">
+      <button class="btn-modal-cancelar" onclick="fecharModal()">Continuar quiz</button>
+      <button class="btn-modal-sair" onclick="confirmarSaida()">Sair</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../javascript/script.js"></script>
+<script>
+  // Carrega dinamicamente o ficheiro de perguntas da disciplina certa
+  (function() {
+    const disc = new URLSearchParams(window.location.search).get('disciplina') || 'seac';
+    const s = document.createElement('script');
+    s.src = '../javascript/' + disc + '.js';
+    document.head.appendChild(s);
+  })();
+</script>
+<script src="../javascript/quiz.js"></script>
+</body>
+</html>
