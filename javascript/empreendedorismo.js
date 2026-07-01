@@ -26,7 +26,7 @@ var perguntasEmpreendedorismo = {
 
     { tipo: 'mc', pergunta: 'Os quatro ps que Kotler identificou são:', opcoes: ['Distribuição,Promoção e pessoa', 'Pessoas,Processos,programa e Performance', 'Programa,Promoção,Distribuição e Preço.' ], resposta: 1 },
 
-    { tipo: 'mc', pergunta: 'O Plano de Organização de Recursos Humanos tem como objectivo a apresentação da estrutura organizativa e planificação dos recursos humanos e consiste:', opcoes: [' Apresentação da equipe de trabalho ,número de trabalhadores,funções e estrutura,Organograma,Capacidades necessárias e perfil desejado', 'Explicar a competência externa necessária,Anexar os currículos vitae dos executivos principais e mostrar que estes são capazes de superar desafios.' ], resposta: 1 },
+    { tipo: 'mc', pergunta: 'O Plano de Organização de Recursos Humanos tem como objectivo a apresentação da estrutura organizativa e planificação dos recursos humanos e consiste:', opcoes: [' Apresentação da equipe de trabalho ,número de trabalhadores,funções e estrutura,Organograma,Capacidades necessárias e perfil desejado', 'Explicar a competência externa necessária,Anexar os currículos vitae dos executivos principais e mostrar que estes são capazes de superar desafios.' ], resposta: 0 },
 
     { tipo: 'mc', pergunta: 'A probabilidade do sucesso de um negócio depende dos seguintes factores:', opcoes: ['Plano de investimento,Plano de financiamento,Identificadores de gestão,Análise de viabilidade económico financeiro', 'Preço de venda,Quantidade de venda,Alterações na Estrutura de Custos,Alteração de taxa de juro,taxa de inflação.' ], resposta: 0 },
  
